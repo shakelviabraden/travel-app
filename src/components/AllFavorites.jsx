@@ -22,6 +22,9 @@ function AllFavorites({ favorites, changeDelete}) {
 
     return (
         <>
+           <h1>Favorite Destinations</h1>
+            <p>Your favorite countries will display here.</p>
+            <br />
         <Grid container spacing={2}>
             {favorites.map((place, index) => {
                 return (<Grid item xs={2} key={index}>

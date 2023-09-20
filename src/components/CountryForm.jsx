@@ -23,7 +23,7 @@ function AddToFavoritesButton({ countryName, change, favorites, error }) {
     )
 };
 
-function FavoritesSection({ change, favorites, error }) {
+function CountryForm({ change, favorites, error }) {
     const [countryName, setCountryName] = useState({
         country: ''
     });
@@ -41,7 +41,7 @@ function FavoritesSection({ change, favorites, error }) {
 
     return (
         <>
-            <h1>Favorite Destinations</h1>
+            <p>Want to add a country manually? Do it here!</p>
             <form onSubmit={handleSubmit}>
                 Country Name: <input
                     type='text'
@@ -50,9 +50,8 @@ function FavoritesSection({ change, favorites, error }) {
                     onChange={handleInputChange} />
                 <AddToFavoritesButton countryName={countryName} change={change} favorites={favorites} error={error} />
             </form>
-            <p>Add Favorites Here</p>
         </>
     )
 }
 
-export default FavoritesSection
+export default CountryForm

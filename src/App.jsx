@@ -4,9 +4,10 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import './App.css'
 import ListOfDestinations from './components/ListOfDestinations'
-import FavoritesSection from './components/FavoritesSection'
 import AllFavorites from './components/AllFavorites'
 import LoadingButton from '@mui/lab/LoadingButton';
+import logo from './images/travel-logo.jpg'
+import CountryForm from './components/CountryForm';
 
 function App() {
   const [ allDestinations, setAllDestinations ] = useState([])
@@ -56,8 +57,18 @@ function App() {
 
   return (
     <>
-     <FavoritesSection favorites={favorites} change={handleState} error={handleStateError}/>
-     <AllFavorites favorites={favorites} changeDelete={handleStateDelete}/>
+    <header style={{display: 'flex'}}>
+      <div>
+        <img src={logo} alt='Boat on a river' />
+      </div>
+      <div>
+        <h1 className='applicationTitle'>A Travel Application</h1>
+        <p>Welcome to my travel application. Here, you are provided with a list of possible travel destinations! You can add a destination to your favorites by clicking the favorite icon. If you are unable to find your destination (or just want to add it manually), you can do so with this handy text box.</p>
+        <p>Feedback? I'd love to hear it! Here is my github repo link: <a href='https://github.com/shakelviabraden/travel-app'>Repo</a></p>
+      </div>
+    </header>
+    <AllFavorites favorites={favorites} changeDelete={handleStateDelete}/>
+     <CountryForm favorites={favorites} change={handleState} error={handleStateError}/>
      <ListOfDestinations allDestinations={allDestinations} change={handleState} error={handleStateError} favorites={favorites}/>
     </>
   )
