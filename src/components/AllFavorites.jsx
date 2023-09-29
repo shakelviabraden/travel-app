@@ -7,14 +7,17 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import { useSelector } from 'react-redux';
 
 
-function AllFavorites({ favorites, changeDelete}) {
+function AllFavorites() {
+    const favorites2 = useSelector((state) => {
+        return state.favorites
+      })
 
-
-    function DeleteButton({place, changeDelete}) {
+    function DeleteButton() {
         return (
-            <IconButton aria-label="delete" size="small" onClick={()=> changeDelete(place)}>
+            <IconButton aria-label="delete" size="small" >
                 <DeleteIcon fontSize="inherit" />
             </IconButton>
         );
@@ -26,11 +29,11 @@ function AllFavorites({ favorites, changeDelete}) {
             <p>Your favorite countries will display here.</p>
             <br />
         <Grid container spacing={2}>
-            {favorites.map((place, index) => {
+            {favorites2.map((place, index) => {
                 return (<Grid item xs={2} key={index}>
                     <div>
                         <p>{index + 1}.{place}
-                        <DeleteButton place={place} index={index} changeDelete={changeDelete}/>
+                        <DeleteButton place={place} index={index} />
                         </p>
                     </div>
                 </Grid>
@@ -38,8 +41,6 @@ function AllFavorites({ favorites, changeDelete}) {
             })}
             </Grid>
         </>
-
-
     )
 };
 

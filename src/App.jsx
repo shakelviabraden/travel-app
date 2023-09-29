@@ -1,54 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import './App.css'
 import ListOfDestinations from './components/ListOfDestinations'
 import AllFavorites from './components/AllFavorites'
 import LoadingButton from '@mui/lab/LoadingButton';
-import logo from './images/travel-logo.jpg'
+import plane__background from './images/plane__background.jpeg';
 import CountryForm from './components/CountryForm';
 
+
+
+
 function App() {
-  const [ allDestinations, setAllDestinations ] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [ favorites, setFavorites ] = useState([]);
-  const [ error, setError ] = useState(null);
+ const [ error, setError ] = useState(null);
 
-  const handleState = (value) => { 
-    {setFavorites([...favorites, value])}
-    };
-
-  const handleStateDelete = (value) => {
-    {setFavorites(favorites.filter((place) => value != place))}
-  }
+  // i have began to create this state in my redux store
+  // const handleStateDelete = (value) => {
+  //   {setFavorites(favorites.filter((place) => value != place))}
+  // }
   
   const handleStateError = (value) => {
     {setError(value)}
   };
-
-  useEffect(() => {
-    const getDestinations = async () => {
-      try {
-        const data = await fetch('https://restcountries.com/v3.1/all')
-        const response = await data.json()
-        setAllDestinations(response)
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      }
-    }
-    getDestinations();
-  }, [])
-
-  if (loading) {
-    return (
-      <LoadingButton loading loadingIndicator="Loading…" variant="outlined">
-        Fetch data
-      </LoadingButton>
-    )
-}
 
 
   if (error) {
@@ -57,19 +31,26 @@ function App() {
 
   return (
     <>
-    <header style={{display: 'flex'}}>
-      <div>
-        <img src={logo} alt='Boat on a river' />
+     <div className='bg'>
+        <img src={plane__background} alt='Boat on a river' />
       </div>
-      <div>
+
+    <header className='intro'>
+      <div className='titleBox'>
         <h1 className='applicationTitle'>A Travel Application</h1>
-        <p>Welcome to my travel application. Here, you are provided with a list of possible travel destinations! You can add a destination to your favorites by clicking the favorite icon. If you are unable to find your destination (or just want to add it manually), you can do so with this handy text box.</p>
-        <p>Feedback? I'd love to hear it! Here is my github repo link: <a href='https://github.com/shakelviabraden/travel-app'>Repo</a></p>
       </div>
     </header>
-    <AllFavorites favorites={favorites} changeDelete={handleStateDelete}/>
-     <CountryForm favorites={favorites} change={handleState} error={handleStateError}/>
-     <ListOfDestinations allDestinations={allDestinations} change={handleState} error={handleStateError} favorites={favorites}/>
+
+    <section>
+      <p>Welcome to my travel application. Here, you are provided with a list of possible travel destinations! You can add a destination to your favorites by clicking the favorite icon. If you are unable to find your destination (or just want to add it manually), you can do so with this handy text box.</p>
+      <p>Feedback? I'd love to hear it! Here is my github repo link: <a href='https://github.com/shakelviabraden/travel-app'>Repo</a></p>
+    </section>
+    
+      <div className='components'>
+        <AllFavorites />
+        <CountryForm error={handleStateError} />
+        <ListOfDestinations error={handleStateError} />
+      </div>
     </>
   )
 };

@@ -3,18 +3,27 @@ import { useState } from "react"
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
+import { useDispatch, useSelector } from "react-redux";
+import { add } from '../store';
 
 
 
-function AddToFavoritesButton({ countryName, change, favorites, error }) {
+
+function AddToFavoritesButton({ countryName, error }) {
+    const dispatch = useDispatch()
+    const favorites2 = useSelector((state) => {
+        return state.favorites
+    })
+
     const handleOnClick = () => {
-        const value = countryName.country
-        const alreadyFavorited = favorites.includes(value); 
+        const value = countryName
+
+        const alreadyFavorited = favorites2.includes(value); 
             if (alreadyFavorited) {
               error(true);
             } else {
               error(false);
-              change(value);
+              dispatch(add(value));
             }
     } 
 
@@ -23,15 +32,13 @@ function AddToFavoritesButton({ countryName, change, favorites, error }) {
     )
 };
 
-function CountryForm({ change, favorites, error }) {
-    const [countryName, setCountryName] = useState({
-        country: ''
-    });
+function CountryForm({ error }) {
+    const [countryName, setCountryName] = useState([]);
 
     const handleInputChange = (e) => {
-        const { value, name } = e.target;
+        const { value } = e.target;
 
-        setCountryName({ [name]: value })
+        setCountryName(value)
     };
 
     const handleSubmit = (e) => {
@@ -46,9 +53,9 @@ function CountryForm({ change, favorites, error }) {
                 Country Name: <input
                     type='text'
                     name='country'
-                    value={countryName.country}
+                    value={countryName}
                     onChange={handleInputChange} />
-                <AddToFavoritesButton countryName={countryName} change={change} favorites={favorites} error={error} />
+                <AddToFavoritesButton countryName={countryName} error={error} />
             </form>
         </>
     )
