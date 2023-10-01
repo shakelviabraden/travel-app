@@ -4,7 +4,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 import { useDispatch, useSelector } from "react-redux";
-import { add } from '../store';
+import { addCountry } from '../store';
 
 
 
@@ -23,7 +23,7 @@ function AddToFavoritesButton({ countryName, error }) {
               error(true);
             } else {
               error(false);
-              dispatch(add(value));
+              dispatch(addCountry(value));
             }
     } 
 

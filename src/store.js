@@ -8,12 +8,12 @@ export const favoritesReducer = createSlice({
     name: 'favorites',
     initialState: [],
     reducers: {
-        add: (state, action) => {
+        addCountry: (state, action) => {
             state.push(action.payload)
         },
         //need to figure out how to correctly write this delete function
-        delete: (state, action) => {
-            state.filter(state)
+        removeCountry: (state, action) => {
+            return state.filter(location => location != action.payload)
         },
     },
 })
@@ -51,7 +51,7 @@ export const store = configureStore({
 
 
 //exporting the actions
-export const { add } = favoritesReducer.actions;
+export const { addCountry, removeCountry } = favoritesReducer.actions;
 
 //exporting to hooks for API calls. use(theEndpoint)Query
 export const { useGetAllDestinationsQuery } = destinationsApi

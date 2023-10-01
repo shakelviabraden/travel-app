@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useSelector, useDispatch } from 'react-redux';
-import { add } from '../store'
+import { addCountry } from '../store'
 import FlightIcon from '@mui/icons-material/Flight';
 import { useGetAllDestinationsQuery } from '../store';
 
@@ -24,7 +25,7 @@ function FavoriteButton ({destination, error}) {
                 error(true);
             } else {
                 error(false);
-                dispatch(add(value));
+                dispatch(addCountry(value));
             }
     } 
 

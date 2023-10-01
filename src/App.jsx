@@ -5,7 +5,6 @@ import Alert from '@mui/material/Alert';
 import './App.css'
 import ListOfDestinations from './components/ListOfDestinations'
 import AllFavorites from './components/AllFavorites'
-import LoadingButton from '@mui/lab/LoadingButton';
 import plane__background from './images/plane__background.jpeg';
 import CountryForm from './components/CountryForm';
 
@@ -32,25 +31,32 @@ function App() {
   return (
     <>
      <div className='bg'>
-        <img src={plane__background} alt='Boat on a river' />
+        <img src={plane__background} alt='A view from a window of the right side of a plane. A sunset and clouds surround its wing.' />
       </div>
 
-    <header className='intro'>
-      <div className='titleBox'>
-        <h1 className='applicationTitle'>A Travel Application</h1>
+    <header className='total-intro'>
+      <div className='title-box'>
+        <h1 className='application-title'>Find Your</h1>
+        <h1 className='application-title'>Ultimate Vacation</h1>
       </div>
+      <section className='about'>
+        <h2 className='initial'>About</h2>
+        <h2 className='after-hover'>How it works:</h2>
+        <p>Welcome to my travel application! Here, you are provided with a list of possible travel destinations. You'll have no problem picking your next vacay spot. You can add a destination to your favorites by clicking the plane next to each. If you are unable to find your destination (or just want to add it manually), you can do so with the text box.</p>
+        <p className='more'>Feedback? I'd love to hear it! Here is my github repo link: <a href='https://github.com/shakelviabraden/travel-app'>Repo</a></p>
+      </section>
     </header>
 
-    <section>
-      <p>Welcome to my travel application. Here, you are provided with a list of possible travel destinations! You can add a destination to your favorites by clicking the favorite icon. If you are unable to find your destination (or just want to add it manually), you can do so with this handy text box.</p>
-      <p>Feedback? I'd love to hear it! Here is my github repo link: <a href='https://github.com/shakelviabraden/travel-app'>Repo</a></p>
-    </section>
-    
-      <div className='components'>
-        <AllFavorites />
+    <section id='grid-container'>
+      <div className='sidebar'id='1'>
+          <AllFavorites />
+      </div>
+
+      <div className='destinations' id='2'>
         <CountryForm error={handleStateError} />
         <ListOfDestinations error={handleStateError} />
       </div>
+    </section>
     </>
   )
 };

@@ -1,56 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Nothing+You+Could+Do&display=swap');
 
 /* setting the background image here. not really sure how it works, got from a website. my contribution is the z-index. i was having difficulty with the background covering all of my text! i changed it to have the lowest index to be in the background.*/
 .bg {
-    position: fixed; 
-    top: -50%; 
-    left: -50%; 
-    width: 200%; 
-    height: 200%;
-    z-index: -1;
-    
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+
+}
+
+.bg img {
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling*/
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.title-box h1 {
+  margin: 0px;
+}
+
+.application-title {
+  font-family: 'Major Mono Display', monospace;
+  font-size: 3.8rem;
+  color: rgb(0, 0, 0);
+  text-shadow: 4px 4px 4px #ffffff4b;
+  text-align: center;
+  margin-top: 0;
+}
+
+.total-intro {
+  position: relative;
+  width: 80%;
+  height: 200px;
+  margin: auto;
+  margin-top: 20px;
+  box-shadow: 0px 0px 5px 5px #000000;
+}
+
+
+.about {
+  font-family: 'Nothing You Could Do', cursive;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(4, 34, 230, 0.466);
+  height: 25%;
+  width: 25%;
+  overflow: hidden;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+  margin: 0;
+  font-size: 1.35em;
+}
+
+.about h2 {
+  text-align: center;
+  margin-top: 5.5px;
+  margin-bottom: 0;
+}
+
+.about p {
+  opacity: 0;
+  font-size: 1.35em;
+}
+
+.about .after-hover {
+  display: none;
+}
+
+.about:hover p {
+  opacity: 1;
+  color: white;
+  margin-top: 0;
+  font-size: 1em;
+}
+
+.about:hover .after-hover {
+  display: block;
+  text-align: center;
+  font-size: 1.8em;
+  padding-bottom: 0px;
+  color: white;
+  text-emphasis: bold;
+  margin: 0px;
+}
+
+.about:hover .initial {
+  display: none;
+}
+
+.about:hover {
+  background: rgba(0, 0, 0, 0.801);
+  height: 100%;
+  width: 100%;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.about:hover .more {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  margin-bottom: 0;
+  font-size: 1em;
+  opacity: 1;
+  color: white;
+}
+
+
+/* .sidebar {
+  position: absolute;
+  height: auto;
+  width: 325px;
+  top: 250px;
+  left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10 px;
+  background-color: lightblue;
+} */
+
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding-top: 30px;
+  padding-left: 10px;
+  top: 280px;
+  left: 10px;
   }
-  .bg img {
-    min-height: 100%;
-    min-width: 1024px;
-      
-    /* Set up proportionate scaling*/
-    width: 100%;
-    height: auto; 
-      
-    /* Set up positioning */
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  } 
 
-  .titleBox {
-    height: 150px;
-    top: 0;
-    background-color: rgba(254, 214, 183, 0.718);
-    /* border-radius: 80px; */
-    margin: 0 auto;
-    width: 80%;
-  }
+.sidebar {
+  grid-column-start: 1;
+  grid-row-end: 2;
+  background-color: rgba(0, 0, 0, 0.363);
+  box-shadow: 0px 0px 5px 5px #fcfcfc;
+}
 
-  .applicationTitle {
-    font-family: 'Playfair Display SC', serif;
-    font-size: 75px;
-    color: white;
-    text-shadow: 4px 4px 4px #ffffff4b;
-    text-align: center;
-    margin-top: 0;
-  }
-
-  .intro {
-    z-index: 500;
-  
-  }
-
-
-  section {
-    margin-top: 200px;
-  }
-
- 
+.destinations {
+ margin-left: 50px;
+}
